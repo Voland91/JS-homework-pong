@@ -30,6 +30,7 @@ class BallUtilities {
   rotator() {
     const randomVector = Math.random() > 0.5 ? 1 : -1;
     if (this.board[this.position.y][this.position.x] === "Y") {
+      this.board[this.position.y][this.position.x] = "0";
       this.vector.y = randomVector;
     }
   }
