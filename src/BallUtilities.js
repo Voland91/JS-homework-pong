@@ -28,11 +28,12 @@ class BallUtilities {
   }
 
   rotator() {
-    const randomVector = Math.random() > 0.5 ? 1 : -1;
+    const randomVectorX = Math.random() > 0.5 ? 1 : -1;
+    const randomVectorY = Math.random() > 0.5 ? 1 : -1;
     if (this.board[this.position.y][this.position.x] === "Y") {
       this.board[this.position.y][this.position.x] = "0";
-      this.vector.y = randomVector;
-      this.vector.x = randomVector;
+      this.vector.x = randomVectorX;
+      this.vector.y = randomVectorY;
     }
   }
 

@@ -23,7 +23,6 @@ const Game = () => {
   useEffect(() => {
     const playGame = () => {
       ball.move();
-      console.log("asd");
       if (
         ball.position.x === ballEndPosition.x &&
         ball.position.y === ballEndPosition.y
