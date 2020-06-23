@@ -32,6 +32,7 @@ class BallUtilities {
     if (this.board[this.position.y][this.position.x] === "Y") {
       this.board[this.position.y][this.position.x] = "0";
       this.vector.y = randomVector;
+      this.vector.x = randomVector;
     }
   }
 
