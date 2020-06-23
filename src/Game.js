@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import BallUtilities from "./BallUtilities";
-import { board, startVector, getBallPosition } from "./BoardUtilities";
+import { board, startVector, startPosition } from "./BoardUtilities";
 import Button from "./components/Button";
 import Board from "./components/Board";
 
@@ -11,8 +11,9 @@ const StyledBoardWrapper = styled.div`
   align-items: center;
 `;
 
-const ballInitialPosition = getBallPosition(),
-  ballEndPosition = getBallPosition();
+const ballEndPosition = { ...startPosition },
+  ballInitialPosition = { ...startPosition };
+
 const ball = new BallUtilities(board, ballInitialPosition, startVector);
 
 const Game = () => {

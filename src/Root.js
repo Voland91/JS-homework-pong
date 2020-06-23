@@ -1,5 +1,5 @@
 import React from "react";
-import Canvas from "./Game";
+import Game from "./Game";
 import styled from "styled-components";
 
 const StyledBackground = styled.div`
@@ -14,7 +14,7 @@ const StyledBackground = styled.div`
 function Root() {
   return (
     <StyledBackground>
-      <Canvas />
+      <Game />
     </StyledBackground>
   );
 }

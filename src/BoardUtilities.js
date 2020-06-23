@@ -31,19 +31,6 @@ const board = [
 // ];
 
 const startVector = { x: 1, y: 1 };
+const startPosition = { x: 1, y: 1 };
 
-const getBallPosition = () => {
-  let position;
-
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i].length; j++) {
-      if (board[i][j] === "1") {
-        position = { x: j, y: i };
-        break;
-      }
-    }
-  }
-  return position;
-};
-
-export { board, startVector, getBallPosition };
+export { board, startVector, startPosition };
