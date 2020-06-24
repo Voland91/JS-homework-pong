@@ -17,10 +17,10 @@ const ballInitialPosition = { ...startPosition };
 const ball = new BallUtilities(board, ballInitialPosition, startVector);
 
 class Game extends React.Component {
-  state = { board: ball.board, play: false };
+  state = { board: ball.board, play: false, speed: null };
 
   handleClick = () => {
-    this.setState({ play: true });
+    this.setState({ play: !this.state.play, board: [...ball.board] });
 
     const playGame = () => {
       ball.move();
@@ -31,17 +31,15 @@ class Game extends React.Component {
       ) {
         ball.vector.x = 1;
         ball.vector.y = 1;
-        this.setState({ play: false });
         clearInterval(speed);
+        this.setState({ play: false });
       }
     };
 
     if (this.state.play) {
-      var speed = setInterval(() => playGame(), 100);
+      var speed = setInterval(playGame, 100);
     }
   };
-
-  componentWillUpdate() {}
 
   render() {
     return (
