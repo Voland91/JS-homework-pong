@@ -11,8 +11,8 @@ const StyledBoardWrapper = styled.div`
   align-items: center;
 `;
 
-const ballEndPosition = { ...startPosition },
-  ballInitialPosition = { ...startPosition };
+const ballEndPosition = { ...startPosition };
+const ballInitialPosition = { ...startPosition };
 
 const ball = new BallUtilities(board, ballInitialPosition, startVector);
 
@@ -34,11 +34,12 @@ const Game = () => {
     };
 
     if (play) {
-      setSpeed(setInterval(playGame(), 1000));
+      setSpeed(setInterval(playGame(), 2000));
     } else {
       clearInterval(speed);
     }
   }, [play, speed]);
+
   return (
     <StyledBoardWrapper>
       <Board ball={board} />

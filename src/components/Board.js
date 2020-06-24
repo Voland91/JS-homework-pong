@@ -15,7 +15,6 @@ const StyledBoardWrapper = styled.div`
 
 const Board = ({ ball }) => (
   <StyledBoardWrapper>
-    {/* {console.log(ball)} */}
     {ball.map((items) =>
       items.map(
         (item) =>
@@ -25,7 +24,6 @@ const Board = ({ ball }) => (
           (item === "Y" && <Rotator />)
       )
     )}
-    {/* {console.log(this.state)} */}
   </StyledBoardWrapper>
 );
 
