@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import BallUtilities from "./BallUtilities";
 import { board, startVector, startPosition } from "./BoardUtilities";
@@ -16,36 +16,41 @@ const ballInitialPosition = { ...startPosition };
 
 const ball = new BallUtilities(board, ballInitialPosition, startVector);
 
-const Game = () => {
-  let [play, setPlay] = useState(false);
-  let [speed, setSpeed] = useState(null);
+class Game extends React.Component {
+  state = { board: ball.board, play: false };
 
-  useEffect(() => {
+  handleClick = () => {
+    this.setState({ play: true });
+
     const playGame = () => {
       ball.move();
+      this.setState({ board: [...ball.board] });
       if (
         ball.position.x === ballEndPosition.x &&
         ball.position.y === ballEndPosition.y
       ) {
         ball.vector.x = 1;
         ball.vector.y = 1;
-        setPlay(false);
+        this.setState({ play: false });
+        clearInterval(speed);
       }
     };
 
-    if (play) {
-      setSpeed(setInterval(playGame(), 2000));
-    } else {
-      clearInterval(speed);
+    if (this.state.play) {
+      var speed = setInterval(() => playGame(), 100);
     }
-  }, [play, speed]);
+  };
 
-  return (
-    <StyledBoardWrapper>
-      <Board ball={board} />
-      <Button onClick={() => setPlay(!play)}>START</Button>
-    </StyledBoardWrapper>
-  );
-};
+  componentWillUpdate() {}
+
+  render() {
+    return (
+      <StyledBoardWrapper>
+        <Board ball={board} />
+        <Button onClick={() => this.handleClick()}>START</Button>
+      </StyledBoardWrapper>
+    );
+  }
+}
 
 export default Game;
