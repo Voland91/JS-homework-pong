@@ -17,10 +17,10 @@ const ballInitialPosition = { ...startPosition };
 const ball = new BallUtilities(board, ballInitialPosition, startVector);
 
 class Game extends React.Component {
-  state = { board: ball.board, play: false, speed: null };
+  state = { board: ball.board, play: false };
 
   handleClick = () => {
-    this.setState({ play: !this.state.play, board: [...ball.board] });
+    this.setState({ play: !this.state.play });
 
     const playGame = () => {
       ball.move();
