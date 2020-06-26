@@ -38,8 +38,8 @@ class BallUtilities {
   }
 
   move() {
-    this.rotator();
     this.borderCheck();
+    this.rotator();
     if (this.board[this.position.y][this.position.x] === "1") {
       this.board[this.position.y][this.position.x] = "0";
     }

@@ -11,8 +11,8 @@ const StyledBoardWrapper = styled.div`
   align-items: center;
 `;
 
-const ballEndPosition = { ...startPosition };
-const ballInitialPosition = { ...startPosition };
+const ballEndPosition = startPosition();
+const ballInitialPosition = startPosition();
 
 const ball = new BallUtilities(board, ballInitialPosition, startVector);
 
@@ -21,23 +21,25 @@ class Game extends React.Component {
 
   handleClick = () => {
     this.setState({ play: !this.state.play });
+  };
 
-    const playGame = () => {
-      ball.move();
-      this.setState({ board: [...ball.board] });
-      if (
-        ball.position.x === ballEndPosition.x &&
-        ball.position.y === ballEndPosition.y
-      ) {
-        ball.vector.x = 1;
-        ball.vector.y = 1;
-        clearInterval(speed);
-        this.setState({ play: false });
-      }
-    };
-
+  componentWillUpdate() {
     if (this.state.play) {
-      var speed = setInterval(playGame, 100);
+      this.speed = setInterval(this.playGame, 80);
+    }
+  }
+
+  playGame = () => {
+    ball.move();
+    this.setState({ board: [...ball.board] });
+    if (
+      ball.position.x === ballEndPosition.x &&
+      ball.position.y === ballEndPosition.y
+    ) {
+      ball.vector.x = 1;
+      ball.vector.y = 1;
+      clearInterval(this.speed);
+      this.setState({ play: false });
     }
   };
 
